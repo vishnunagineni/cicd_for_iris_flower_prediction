@@ -47,9 +47,9 @@ def train_and_evaluate(config_path):
     # Load the model
     # with open(model_path, 'rb') as f:
     #     model = pickle.load(f)
-    # X_new = np.array([[3, 2, 1, 0.2], [  4.9, 2.2, 3.8, 1.1 ], [  5.3, 2.5, 4.6, 1.9 ]])
-    # prediction = svc.predict(X_new)
-    # print("Prediction of Species: {}".format(prediction))
+    X_new = np.array([[3, 2, 1, 0.2], [  4.9, 2.2, 3.8, 1.1 ], [  5.3, 2.5, 4.6, 1.9 ]])
+    prediction = svc.predict(X_new)
+    print("Prediction of Species: {}".format(prediction))
 
 if __name__=="__main__":
     args=argparse.ArgumentParser()

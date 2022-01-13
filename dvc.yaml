@@ -28,3 +28,8 @@ stages:
     - src/train.py
     outs:
     - saved_models/model.pkl
+  
+  # log_production_model:
+  #   cmd: python src/train.py --config=params.yaml
+  #   deps:
+  #   - src/train.py
