@@ -1,0 +1,43 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: data_given/iris.data
+      md5: 42615765a885ddf54427f12c34a0a070
+      size: 4551
+    - path: params.yaml
+      md5: 5732f020b4e1fbf28654d33bab011b8a
+      size: 463
+    - path: src/get_data.py
+      md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
+      size: 628
+    - path: src/load_data.py
+      md5: f5efd9f4e15263a0be3e86c4f4fce6d7
+      size: 561
+    outs:
+    - path: data/raw/iris.data
+      md5: c899ef7c4dd555de3bde5cfb65341ebb
+      size: 4764
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/iris.data
+      md5: c899ef7c4dd555de3bde5cfb65341ebb
+      size: 4764
+    - path: params.yaml
+      md5: 5732f020b4e1fbf28654d33bab011b8a
+      size: 463
+    - path: src/get_data.py
+      md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
+      size: 628
+    - path: src/split_data.py
+      md5: a961083aed5799ebc3456dde33e19f38
+      size: 962
+    outs:
+    - path: data/processed/test.data
+      md5: 4b27921c538fb7bf89953a663c1a25b8
+      size: 1246
+    - path: data/processed/train.data
+      md5: 5fa28e8602e135c84e0330b8b9eeeff9
+      size: 3582

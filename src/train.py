@@ -13,9 +13,9 @@ import pickle
 from get_data import read_params
 import json
 import argparse
-import mlflow
-mlflow.set_tracking_uri("http://10.42.204.118:8000")
-mlflow.set_experiment("Iris_SVM")
+#import mlflow
+#mlflow.set_tracking_uri("http://10.42.204.118:8000")
+#mlflow.set_experiment("Iris_SVM")
 def train_and_evaluate(config_path):
     config = read_params(config_path)
     train_data_path = config["split_data"]["train_path"]
@@ -30,22 +30,19 @@ def train_and_evaluate(config_path):
     train_x = train.drop([target],axis=1) 
     test_x = test.drop([target],axis=1)
     # Support vector machine algorithm
-    with mlflow.start_run(run_name="svm"):
-        svc = SVC()
-        svc.fit(train_x, train_y)
-        # Predict from the test dataset
-        predictions = svc.predict(test_x)
-        # Calculate the accuracy
-        accuracy=accuracy_score(test_y, predictions)
-        print("Accuracy is :",accuracy)
-        mlflow.log_metric("Accuracy_Score",accuracy)
-        mlflow.sklearn.log_model(svc,"model",registered_model_name="RandomForestClassifier")
-        # A detailed classification report
-        print(classification_report(test_y, predictions))
-        # Save the model
-        model_path = os.path.join(model_dir,'model.pkl')
-        with open(model_path, 'wb') as f:
-           pickle.dump(svc, f)
+    svc = SVC()
+    svc.fit(train_x, train_y)
+    # Predict from the test dataset
+    predictions = svc.predict(test_x)
+    # Calculate the accuracy
+    accuracy=accuracy_score(test_y, predictions)
+    print("Accuracy is :",accuracy)
+    # A detailed classification report
+    print(classification_report(test_y, predictions))
+    # Save the model
+    model_path = os.path.join(model_dir,'model.pkl')
+    with open(model_path, 'wb') as f:
+        pickle.dump(svc, f)
     
     # Load the model
     # with open(model_path, 'rb') as f:
