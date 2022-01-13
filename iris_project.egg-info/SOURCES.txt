@@ -1,0 +1,14 @@
+README.md
+setup.py
+iris_project.egg-info/PKG-INFO
+iris_project.egg-info/SOURCES.txt
+iris_project.egg-info/dependency_links.txt
+iris_project.egg-info/top_level.txt
+src/__init__.py
+src/get_data.py
+src/load_data.py
+src/split_data.py
+src/train.py
+tests/__init__.py
+tests/conftest.py
+tests/test_config.py

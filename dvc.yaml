@@ -1,0 +1,30 @@
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - params.yaml
+    - src/get_data.py
+    - src/load_data.py
+    - data_given/iris.data
+    outs:
+    - data/raw/iris.data
+  
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - params.yaml
+    - src/get_data.py
+    - src/split_data.py
+    - data/raw/iris.data
+    outs:
+    - data/processed/train.data
+    - data/processed/test.data
+  train_data:
+    cmd: python src/train.py --config=params.yaml
+    deps:
+    - params.yaml
+    - data/processed/train.data
+    - data/processed/test.data
+    - src/train.py
+    outs:
+    - saved_models/model.pkl
