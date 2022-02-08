@@ -39,12 +39,14 @@ def log_production_model(config_path):
                 stage="Staging"
             )
         
-        loaded_model = mlflow.pyfunc.load_model(logged_model)
-        print(loaded_model)
-        model_path = config["webapp_model_dir"]
-        joblib.dump(loaded_model,model_path)
-        print("hello")
-
+    loaded_model = mlflow.pyfunc.load_model(logged_model)
+    print(loaded_model)
+    model_path = config["model_dir"]
+    webapp_model_path = config["webapp_model_dir"]
+    joblib.dump(loaded_model,model_path)
+    joblib.dump(loaded_model,webapp_model_path)
+        
+        
 if __name__=="__main__":
     args=argparse.ArgumentParser()
     args.add_argument("--config",default="params.yaml")

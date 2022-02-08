@@ -15,8 +15,8 @@ split_data:
   test_path: data/processed/test.data
   test_size: 0.33
 
-model_dir: saved_models
-webapp_model_dir: prediction_service/model/model.pkl
+model_dir: saved_models/model.joblib
+webapp_model_dir: prediction_service/model/model.joblib
 
 mlflow_config:
   artifacts_dir: artifacts

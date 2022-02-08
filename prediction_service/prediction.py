@@ -1,3 +1,4 @@
+import joblib
 import yaml
 import os
 import json
@@ -29,7 +30,7 @@ def predict(data):
     config = read_params(params_path)
     model_dir_path = config["webapp_model_dir"]
     with open(model_dir_path,'rb') as f:
-        model = pickle.load(f)
+        model = joblib.load(f)
     prediction = model.predict(data)
     print(prediction)
     try:

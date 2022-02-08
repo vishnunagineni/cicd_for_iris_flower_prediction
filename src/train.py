@@ -49,12 +49,6 @@ def train_and_evaluate(config_path):
             mlflow.sklearn.log_model(svc,"model",registered_model_name=mlflow_config["registered_model_name"])
         else:
             mlflow.sklearn.load_model(svc,"model")
-
-        # Save the model
-        model_path = os.path.join(model_dir,'model.pkl')
-        with open(model_path, 'wb') as f:
-            pickle.dump(svc, f)
-    
     # Load the model
     # with open(model_path, 'rb') as f:
     #     model = pickle.load(f)
