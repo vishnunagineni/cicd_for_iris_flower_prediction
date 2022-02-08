@@ -27,7 +27,8 @@ def read_params(config_path=params_path):
 
 def predict(data):
     config = read_params(params_path)
-    model_dir_path = config["webapp_model_dir"]
+    model_dir_path = config["model_dir"]
+    model_dir_path = os.path.join(model_dir_path,'model.pkl')
     with open(model_dir_path,'rb') as f:
         model = pickle.load(f)
     prediction = model.predict(data)

@@ -1,20 +1,20 @@
 schema: '2.0'
 stages:
   load_data:
-    cmd: python src/load_data.py --config=params.yaml
+    cmd: python src/load_and_process.py --config=params.yaml
     deps:
     - path: data_given/iris.data
       md5: 42615765a885ddf54427f12c34a0a070
       size: 4551
     - path: params.yaml
-      md5: 5732f020b4e1fbf28654d33bab011b8a
-      size: 463
+      md5: 66e6c3bf2f893bbf609e115955e9703e
+      size: 641
     - path: src/get_data.py
       md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
       size: 628
-    - path: src/load_data.py
-      md5: f5efd9f4e15263a0be3e86c4f4fce6d7
-      size: 561
+    - path: src/load_and_process.py
+      md5: e0f2b98429f31c6e9900192d3eb7cc5a
+      size: 1087
     outs:
     - path: data/raw/iris.data
       md5: c899ef7c4dd555de3bde5cfb65341ebb
@@ -26,8 +26,8 @@ stages:
       md5: c899ef7c4dd555de3bde5cfb65341ebb
       size: 4764
     - path: params.yaml
-      md5: 5732f020b4e1fbf28654d33bab011b8a
-      size: 463
+      md5: 66e6c3bf2f893bbf609e115955e9703e
+      size: 641
     - path: src/get_data.py
       md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
       size: 628
@@ -41,3 +41,31 @@ stages:
     - path: data/processed/train.data
       md5: 5fa28e8602e135c84e0330b8b9eeeff9
       size: 3582
+  train_data:
+    cmd: python src/train.py --config=params.yaml
+    deps:
+    - path: data/processed/test.data
+      md5: 4b27921c538fb7bf89953a663c1a25b8
+      size: 1246
+    - path: data/processed/train.data
+      md5: 5fa28e8602e135c84e0330b8b9eeeff9
+      size: 3582
+    - path: params.yaml
+      md5: 66e6c3bf2f893bbf609e115955e9703e
+      size: 641
+    - path: src/train.py
+      md5: f70a7afab45f066a1f53a020959a42b3
+      size: 2726
+    outs:
+    - path: saved_models/model.pkl
+      md5: cba0e619d1d54928d1fce11df54b16ce
+      size: 3973
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: 1fd351dc3fb51085848ad166780cfdc2
+      size: 1825
+    - path: src/train.py
+      md5: f70a7afab45f066a1f53a020959a42b3
+      size: 2726

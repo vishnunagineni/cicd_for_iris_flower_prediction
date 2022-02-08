@@ -1,10 +1,10 @@
 stages:
   load_data:
-    cmd: python src/load_data.py --config=params.yaml
+    cmd: python src/load_and_process.py --config=params.yaml
     deps:
     - params.yaml
     - src/get_data.py
-    - src/load_data.py
+    - src/load_and_process.py
     - data_given/iris.data
     outs:
     - data/raw/iris.data
@@ -29,7 +29,8 @@ stages:
     outs:
     - saved_models/model.pkl
   
-  # log_production_model:
-  #   cmd: python src/train.py --config=params.yaml
-  #   deps:
-  #   - src/train.py
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - src/train.py
+    - src/log_production_model.py
