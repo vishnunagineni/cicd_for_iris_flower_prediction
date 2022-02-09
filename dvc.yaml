@@ -18,6 +18,7 @@ stages:
     outs:
     - data/processed/train.data
     - data/processed/test.data
+    
   train_data:
     cmd: python src/train.py --config=params.yaml
     deps:
