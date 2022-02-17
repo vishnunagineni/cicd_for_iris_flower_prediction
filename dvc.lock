@@ -23,7 +23,7 @@ stages:
       md5: 296f7e73d5c12cc228eaa4444075b5ad
       size: 4735
     - path: params.yaml
-      md5: d502648486e57ef885d2c27811ddcce3
+      md5: 30e4f13842f8656ccc2c7b887c309643
       size: 657
     - path: src/get_data.py
       md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
@@ -33,22 +33,22 @@ stages:
       size: 962
     outs:
     - path: data/processed/test.data
-      md5: b8bc022943e989840776304967cd336f
-      size: 1246
+      md5: 102c9e1a340ef359db6b1a2663b52e98
+      size: 1460
     - path: data/processed/train.data
-      md5: 0fe32518f447e6c4b3aa3b2a0109ab87
-      size: 3553
+      md5: 7288c81a6d80f13a2c4396bad01fa4fc
+      size: 3339
   train_data:
     cmd: python src/train.py --config=params.yaml
     deps:
     - path: data/processed/test.data
-      md5: b8bc022943e989840776304967cd336f
-      size: 1246
+      md5: 102c9e1a340ef359db6b1a2663b52e98
+      size: 1460
     - path: data/processed/train.data
-      md5: 0fe32518f447e6c4b3aa3b2a0109ab87
-      size: 3553
+      md5: 7288c81a6d80f13a2c4396bad01fa4fc
+      size: 3339
     - path: params.yaml
-      md5: d502648486e57ef885d2c27811ddcce3
+      md5: 30e4f13842f8656ccc2c7b887c309643
       size: 657
     - path: src/train.py
       md5: 896acfbf1f33640920545b3b53bf30b5
