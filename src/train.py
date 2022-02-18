@@ -14,8 +14,7 @@ from get_data import read_params
 import json
 import argparse
 import mlflow
-#mlflow.set_tracking_uri("http://10.42.204.118:8000")
-#mlflow.set_experiment("Iris_SVM")
+
 def train_and_evaluate(config_path):
     config = read_params(config_path)
     train_data_path = config["split_data"]["train_path"]
