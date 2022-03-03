@@ -17,8 +17,8 @@ import mlflow
 
 def train_and_evaluate(config_path):
     config = read_params(config_path)
-    train_data_path = config["split_data"]["train_path"]
-    test_data_path = config["split_data"]["test_path"]
+    train_data_path = config["processed_data_config"]["train_path"]
+    test_data_path = config["processed_data_config"]["test_path"]
     model_dir = config["model_dir"]
     random_state = config["base"]["random_state"]
     target = config["base"]["target_col"]

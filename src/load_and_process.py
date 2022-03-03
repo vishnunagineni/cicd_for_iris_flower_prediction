@@ -6,7 +6,7 @@ def load_and_save(config_path):
     config=read_params(config_path)
     df = get_data(config_path)
     new_cols = [col.replace(' ','_') for col in df.columns]
-    raw_data_path = config["load_data"]["raw_data"]
+    raw_data_path = config["raw_data_config"]["raw_data"]
     cols=[]
     for col in df:
         if df[col].isna().sum()>0:

@@ -7,10 +7,12 @@ data_source:
   data_path: data_given/iris.data
   columns: ['Sepal length', 'Sepal width', 'Petal length', 'Petal width', 'Class_labels']
 
-load_data:
+raw_data_config:
   raw_data: data/raw/iris.data
+  new_raw_data: data/raw/iris_new.csv
+  target: Class_labels
 
-split_data:
+processed_data_config:
   train_path: data/processed/train.data
   test_path: data/processed/test.data
   test_size: 0.25
@@ -24,3 +26,7 @@ mlflow_config:
   tracking_uri: http://localhost:1234/
   run_name: mlops
   registered_model_name: SVCModel
+
+model_monitor:
+  target_col_name: target
+  monitor_dashboard_html: reports/data_and_target_drift_dashboard.html
