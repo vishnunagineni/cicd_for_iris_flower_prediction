@@ -15,7 +15,7 @@ raw_data_config:
 processed_data_config:
   train_path: data/processed/train.data
   test_path: data/processed/test.data
-  test_size: 0.25
+  test_size: 0.35
 
 model_dir: saved_models/model.joblib
 webapp_model_dir: prediction_service/model/model.joblib

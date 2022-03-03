@@ -10,8 +10,8 @@ stages:
       md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
       size: 628
     - path: src/load_and_process.py
-      md5: e0f2b98429f31c6e9900192d3eb7cc5a
-      size: 1087
+      md5: 121b712705238a80c4a3a7b69b0546c3
+      size: 1093
     outs:
     - path: data/raw/iris.data
       md5: 296f7e73d5c12cc228eaa4444075b5ad
@@ -23,36 +23,36 @@ stages:
       md5: 296f7e73d5c12cc228eaa4444075b5ad
       size: 4735
     - path: params.yaml
-      md5: d502648486e57ef885d2c27811ddcce3
-      size: 657
+      md5: 8d506d02cd13695d4de2d82ca6445372
+      size: 854
     - path: src/get_data.py
       md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
       size: 628
     - path: src/split_data.py
-      md5: a961083aed5799ebc3456dde33e19f38
-      size: 962
+      md5: fdbcbc1cb2d72d85599e9f8aa483fdbc
+      size: 1001
     outs:
     - path: data/processed/test.data
-      md5: b8bc022943e989840776304967cd336f
-      size: 1246
+      md5: 570d221344d83706af66a81c5a8a7ab4
+      size: 1720
     - path: data/processed/train.data
-      md5: 0fe32518f447e6c4b3aa3b2a0109ab87
-      size: 3553
+      md5: b61a81a5f722d1886ddd381ab9fdff2a
+      size: 3079
   train_data:
     cmd: python src/train.py --config=params.yaml
     deps:
     - path: data/processed/test.data
-      md5: b8bc022943e989840776304967cd336f
-      size: 1246
+      md5: 570d221344d83706af66a81c5a8a7ab4
+      size: 1720
     - path: data/processed/train.data
-      md5: 0fe32518f447e6c4b3aa3b2a0109ab87
-      size: 3553
+      md5: b61a81a5f722d1886ddd381ab9fdff2a
+      size: 3079
     - path: params.yaml
-      md5: d502648486e57ef885d2c27811ddcce3
-      size: 657
+      md5: 8d506d02cd13695d4de2d82ca6445372
+      size: 854
     - path: src/train.py
-      md5: 4ab93e0a0653b974d85bdbd4dec2f3b6
-      size: 2469
+      md5: 246347f22b146f80d15167e9ca520e77
+      size: 2491
   log_production_model:
     cmd: python src/log_production_model.py --config=params.yaml
     deps:
@@ -60,9 +60,9 @@ stages:
       md5: bd17d014788805a859ed6270822560ed
       size: 1897
     - path: src/train.py
-      md5: 4ab93e0a0653b974d85bdbd4dec2f3b6
-      size: 2469
+      md5: 246347f22b146f80d15167e9ca520e77
+      size: 2491
     outs:
     - path: saved_models/model.joblib
-      md5: 2fa153280b4d242b82d310eb4e63de76
-      size: 5859
+      md5: c94d2a903bd3e330ec4c359e4c68a447
+      size: 5519
