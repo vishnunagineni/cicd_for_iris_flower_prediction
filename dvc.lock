@@ -4,8 +4,8 @@ stages:
     cmd: python src/load_and_process.py --config=params.yaml
     deps:
     - path: data_given/iris.data
-      md5: 485389a3c002edec26f3e4dcd31435e8
-      size: 4523
+      md5: 060702662f828b5dc701eba3c45c4dda
+      size: 4411
     - path: src/get_data.py
       md5: 8bd867d8e0aa8c88e9c7ad761ca758c4
       size: 628
@@ -14,14 +14,14 @@ stages:
       size: 1093
     outs:
     - path: data/raw/iris.data
-      md5: 296f7e73d5c12cc228eaa4444075b5ad
-      size: 4735
+      md5: ba97ea6dfd146572f978b9fc337981ff
+      size: 4619
   split_data:
     cmd: python src/split_data.py --config=params.yaml
     deps:
     - path: data/raw/iris.data
-      md5: 296f7e73d5c12cc228eaa4444075b5ad
-      size: 4735
+      md5: ba97ea6dfd146572f978b9fc337981ff
+      size: 4619
     - path: params.yaml
       md5: a9e62dd42dbe3ffa758ebe8ef1989b94
       size: 854
@@ -33,20 +33,20 @@ stages:
       size: 1001
     outs:
     - path: data/processed/test.data
-      md5: a98a7515a08e2cb6e6cf9f18af50e685
-      size: 1934
+      md5: b25a4f1419d97f9cab3789c60ad54c31
+      size: 1871
     - path: data/processed/train.data
-      md5: e19c5742324254299f6964069b493cde
-      size: 2865
+      md5: 41f2b7a63bf3ba81240226653da02fec
+      size: 2812
   train_data:
     cmd: python src/train.py --config=params.yaml
     deps:
     - path: data/processed/test.data
-      md5: a98a7515a08e2cb6e6cf9f18af50e685
-      size: 1934
+      md5: b25a4f1419d97f9cab3789c60ad54c31
+      size: 1871
     - path: data/processed/train.data
-      md5: e19c5742324254299f6964069b493cde
-      size: 2865
+      md5: 41f2b7a63bf3ba81240226653da02fec
+      size: 2812
     - path: params.yaml
       md5: a9e62dd42dbe3ffa758ebe8ef1989b94
       size: 854

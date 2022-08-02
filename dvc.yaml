@@ -7,7 +7,7 @@ stages:
     - data_given/iris.data
     outs:
     - data/raw/iris.data
-  
+
   split_data:
     cmd: python src/split_data.py --config=params.yaml
     deps:
@@ -18,7 +18,7 @@ stages:
     outs:
     - data/processed/train.data
     - data/processed/test.data
-    
+
   train_data:
     cmd: python src/train.py --config=params.yaml
     deps:
@@ -26,11 +26,13 @@ stages:
     - data/processed/train.data
     - data/processed/test.data
     - src/train.py
-  
+
   log_production_model:
     cmd: python src/log_production_model.py --config=params.yaml
     deps:
+    - data_given/iris.data
     - src/train.py
     - src/log_production_model.py
     outs:
     - saved_models/model.joblib
+
